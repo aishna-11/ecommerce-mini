@@ -60,9 +60,15 @@ async function refreshNavbar() {
 
   const user = getUser();
   if (user) {
+    const firstName = user.name ? user.name.split(' ')[0] : 'User';
     authArea.innerHTML = `
-      <span class="nav-username">Hi, ${user.name}</span>
-      <button id="logout-btn" class="btn btn-ghost">Logout</button>
+      <div class="nav-btn">
+        <span class="line1">Hello, ${firstName}</span>
+        <span class="line2">Account &amp; Orders ▾</span>
+      </div>
+      <button id="logout-btn" class="btn btn-ghost" style="font-size:13px; padding:5px 10px; border-radius:3px;">
+        Sign Out
+      </button>
     `;
     document.getElementById('logout-btn').addEventListener('click', () => {
       clearSession();
@@ -78,13 +84,14 @@ async function refreshNavbar() {
         badge.style.display = count > 0 ? 'inline-flex' : 'none';
       }
     } catch (e) {
-      // token might be expired - ignore quietly here, pages that need
-      // auth will redirect on their own
+      // token might be expired — ignored, individual pages handle redirect
     }
   } else {
     authArea.innerHTML = `
-      <a href="login.html" class="btn btn-ghost">Login</a>
-      <a href="register.html" class="btn btn-primary">Register</a>
+      <a href="login.html" class="nav-btn" style="text-decoration:none;">
+        <span class="line1">Hello, sign in</span>
+        <span class="line2">Account &amp; Lists ▾</span>
+      </a>
     `;
   }
 }

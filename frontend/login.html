@@ -3,43 +3,52 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Login — Storehouse</title>
+<title>Sign In — ShopZone</title>
 <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-<nav class="navbar">
-  <a href="index.html" class="brand">Store<span>house</span></a>
-  <div class="nav-links">
-    <a href="index.html" class="nav-link">Shop</a>
-    <a href="cart.html" class="nav-link cart-link">Cart <span id="cart-count" class="cart-badge">0</span></a>
+<header class="navbar">
+  <div class="navbar-top" style="justify-content:center;">
+    <a href="index.html" class="brand" style="font-size:28px;">Shop<span>Zone</span></a>
   </div>
-  <div id="auth-area"></div>
-</nav>
+</header>
 
 <div class="container">
   <div class="form-card">
-    <h1>Welcome back</h1>
-    <p class="subtitle">Log in to view your cart and check out.</p>
+    <h1>Sign in</h1>
     <div id="alert-box" class="alert alert-error"></div>
 
     <form id="login-form">
       <div class="field">
         <label for="email">Email</label>
-        <input type="email" id="email" required />
+        <input type="email" id="email" required autocomplete="email" />
       </div>
       <div class="field">
         <label for="password">Password</label>
-        <input type="password" id="password" required />
+        <input type="password" id="password" required autocomplete="current-password" />
       </div>
-      <button type="submit" class="btn btn-primary btn-block">Login</button>
+      <button type="submit" class="btn btn-primary btn-block" style="border-radius:4px; font-size:14px;">
+        Continue
+      </button>
     </form>
 
-    <div class="form-footer-link">
-      Don't have an account? <a href="register.html">Register here</a>
-    </div>
+    <p style="font-size:12px; color:var(--muted); margin:16px 0; line-height:1.6;">
+      By continuing you agree to ShopZone's Conditions of Use and Privacy Notice.
+    </p>
+
+    <hr class="form-divider" />
+
+    <p style="font-size:14px; margin:0; text-align:center;">
+      New to ShopZone?
+      <a href="register.html" style="color:var(--amz-link);">Create your ShopZone account</a>
+    </p>
   </div>
 </div>
+
+<footer class="footer">
+  &copy; 2025 ShopZone, Inc. &nbsp;|&nbsp; <a href="#">Conditions of Use</a> &nbsp;|&nbsp; <a href="#">Privacy Notice</a>
+</footer>
 
 <script src="js/api.js"></script>
 <script src="js/auth.js"></script>

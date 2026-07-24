@@ -3,32 +3,61 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Your Cart — Storehouse</title>
+<title>Shopping Cart — ShopZone</title>
 <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-<nav class="navbar">
-  <a href="index.html" class="brand">Store<span>house</span></a>
-  <div class="nav-links">
-    <a href="index.html" class="nav-link">Shop</a>
-    <a href="cart.html" class="nav-link cart-link">Cart <span id="cart-count" class="cart-badge">0</span></a>
+<header class="navbar">
+  <div class="navbar-top">
+    <a href="index.html" class="brand">Shop<span>Zone</span></a>
+    <div class="navbar-search">
+      <input type="text" id="nav-search" placeholder="Search products, brands and more…" autocomplete="off" />
+      <button class="search-btn" id="nav-search-btn" aria-label="Search">
+        <svg viewBox="0 0 24 24"><path d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z" stroke="#131921" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <nav class="nav-actions">
+      <div id="auth-area"></div>
+      <a href="cart.html" class="cart-link">
+        <div class="cart-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/><line x1="3" y1="6" x2="21" y2="6" stroke="#fff" stroke-width="1.8"/><path d="M16 10a4 4 0 0 1-8 0" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <span id="cart-count" class="cart-badge">0</span>
+        </div>
+        <span class="cart-label">Cart</span>
+      </a>
+    </nav>
   </div>
-  <div id="auth-area"></div>
-</nav>
+  <nav class="cat-nav">
+    <a href="index.html">All</a>
+    <a href="index.html?cat=Electronics">Electronics</a>
+    <a href="index.html?cat=Clothing">Clothing</a>
+    <a href="index.html?cat=Books">Books</a>
+    <a href="index.html?cat=Home">Home &amp; Kitchen</a>
+  </nav>
+</header>
 
 <div class="container">
-  <div class="section-title"><h2>Your Cart</h2></div>
   <div id="alert-box" class="alert"></div>
-
   <div id="cart-content">
-    <div class="loading">Loading cart...</div>
+    <div class="loading">Loading cart…</div>
   </div>
 </div>
 
-<footer class="footer">Mini E-Commerce Website — Task 04 demo project</footer>
+<footer class="footer">
+  &copy; 2025 ShopZone, Inc. &nbsp;|&nbsp; <a href="#">Conditions of Use</a> &nbsp;|&nbsp; <a href="#">Privacy Notice</a>
+</footer>
 
 <script src="js/api.js"></script>
 <script src="js/cart.js"></script>
+<script>
+  document.getElementById('nav-search-btn').addEventListener('click', () => {
+    const q = document.getElementById('nav-search').value.trim();
+    if (q) window.location.href = `index.html?q=${encodeURIComponent(q)}`;
+  });
+  document.getElementById('nav-search').addEventListener('keydown', e => {
+    if (e.key === 'Enter') document.getElementById('nav-search-btn').click();
+  });
+</script>
 </body>
 </html>
