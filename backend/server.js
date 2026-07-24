@@ -20,9 +20,12 @@ app.use('/api/products', productRoutes);
 app.use('/api/cart', cartRoutes);
 app.use('/api/orders', orderRoutes);
 
-// Serve the plain HTML/CSS/JS frontend from the same server,
-// so you only need to run ONE process during development.
-const frontendPath = path.join(__dirname, '..', 'frontend');
+// Serve the plain HTML/CSS/JS frontend from the same server
+// In production (Render), frontend files should be copied into backend/public
+// In development, serve from ../frontend
+const frontendPath = process.env.NODE_ENV === 'production' 
+  ? path.join(__dirname, 'public')
+  : path.join(__dirname, '..', 'frontend');
 app.use(express.static(frontendPath));
 
 app.get('/health', (req, res) => res.json({ status: 'ok' }));
